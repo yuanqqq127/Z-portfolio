@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>赵宇晴 · 产品设计作品集</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Serif+SC:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#F7F3ED;--card:#EDE6DC;--rose:#E8D5CC;
+      --brown:#8B6F5E;--gold:#C9A96E;--ink:#2C2416;
+      --muted:#7A6455;--white:#FDFAF7;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(247,243,237,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(139,111,94,0.12)}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--brown);letter-spacing:.05em}
+    .nav-links{display:flex;gap:2.2rem;list-style:none}
+    .nav-links a{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+    .nav-links a:hover{color:var(--brown)}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 5rem;position:relative;overflow:hidden}
+    .hero-deco{position:absolute;top:0;right:0;width:55vw;height:100%;background:radial-gradient(ellipse at 70% 30%,#E8D5CC 0%,transparent 58%),radial-gradient(ellipse at 20% 80%,rgba(201,169,110,.15) 0%,transparent 50%);pointer-events:none}
+    .hero-eyebrow{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem}
+    .hero-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5.8rem);font-weight:600;line-height:1.1;color:var(--ink);margin-bottom:.5rem}
+    .hero-name em{font-style:italic;color:var(--brown)}
+    .hero-zh{font-size:clamp(1rem,2vw,1.35rem);font-weight:300;color:var(--brown);letter-spacing:.3em;margin-bottom:2rem}
+    .hero-desc{font-size:.96rem;font-weight:300;color:var(--muted);max-width:480px;line-height:2.1;margin-bottom:2.8rem}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+   
+    .btn-primary{display:inline-block;padding:.85rem 2.2rem;background:var(--brown);color:var(--white);text-decoration:none;font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:background .3s}
+    .btn-primary:hover{background:var(--ink)}
+    .btn-outline{display:inline-block;padding:.85rem 2.2rem;border:1.5px solid var(--brown);color:var(--brown);text-decoration:none;font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:all .3s}
+    .btn-outline:hover{background:var(--brown);color:var(--white)}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem}
+    .hero-tag{font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.07em;color:var(--muted);padding:.26rem .85rem;border:1px solid rgba(139,111,94,.22);border-radius:50px}
+
+    /* WAVE */
+    .wave{width:100%;overflow:hidden;line-height:0;opacity:.28}
+    .wave svg{display:block;width:100%}
+
+    /* SHARED SECTION */
+    section{padding:7rem 4rem}
+    .sec-label{font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+    .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;color:var(--ink);margin-bottom:3rem}
+    .sec-title em{font-style:italic;color:var(--brown)}
+
+    /* ABOUT */
+    #about{background:var(--white)}
+    .about-grid{display:grid;grid-template-columns:290px 1fr;gap:5rem;align-items:start;max-width:1060px}
+    .about-photo-wrap{position:relative}
+    .about-photo-wrap::before{content:'';position:absolute;inset:-12px 12px 12px -12px;border:1.5px solid var(--gold);border-radius:2px;opacity:.4;pointer-events:none}
+ 
+    .photo-box{width:100%;aspect-ratio:3/4;background:linear-gradient(145deg,var(--rose) 0%,var(--card) 55%,#D4B896 100%);border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:2rem;gap:.8rem;color:var(--brown)}
+    .photo-box svg{width:50px;height:50px;opacity:.45}
+    .photo-box span{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.14em;opacity:.55}
+    .info-rows{margin-top:1.6rem;display:flex;flex-direction:column;gap:.75rem}
+    .info-row{display:flex;align-items:center;gap:.65rem;font-family:'Inter',sans-serif;font-size:.82rem;color:var(--muted)}
+    .info-row svg{width:14px;height:14px;opacity:.5;flex-shrink:0}
+    .about-p{font-size:.93rem;font-weight:300;line-height:2.05;color:var(--muted);margin-bottom:1.2rem}
+    .tag-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
+    .tag{padding:.3rem .9rem;background:var(--rose);color:var(--brown);font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.05em;border-radius:50px}
+    .award-list{list-style:none;margin-top:1.8rem;border-top:1px solid rgba(139,111,94,.1);padding-top:1.4rem}
+    .award-list li{font-family:'Inter',sans-serif;font-size:.82rem;color:var(--muted);padding:.5rem 0;border-bottom:1px solid rgba(139,111,94,.08);display:flex;align-items:center;gap:.6rem}
+    .award-list li::before{content:'✦';color:var(--gold);font-size:.58rem}
+
+    /* WORKS INDEX */
+    #works{background:var(--bg)}
+    .filter-row{display:flex;gap:.7rem;margin-bottom:2.8rem;flex-wrap:wrap}
+    .fbtn{padding:.38rem 1.1rem;border:1px solid var(--card);background:transparent;color:var(--muted);font-family:'Inter',sans-serif;font-size:.74rem;letter-spacing:.08em;cursor:pointer;transition:all .25s;border-radius:2px}
+    .fbtn.active,.fbtn:hover{background:var(--brown);color:var(--white);border-color:var(--brown)}
+    .works-grid{columns:3;column-gap:1.3rem}
+    .wcard{break-inside:avoid;margin-bottom:1.3rem;background:var(--white);border-radius:3px;overflow:hidden;cursor:pointer;transition:transform .35s,box-shadow .35s;position:relative}
+  
+    .wcard:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(139,111,94,.15)}
+    .wthumb{width:100%;display:flex;align-items:center;justify-content:center;font-size:2.6rem;overflow:hidden;}
+    .woverlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,36,22,.62) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:1.2rem}
+    .wcard:hover .woverlay{opacity:1}
+    .woverlay-text{font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.88);border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px;cursor:pointer}
+    .winfo{padding:1.15rem 1.35rem 1.45rem}
+    .wcat{font-family:'Inter',sans-serif;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+    .wtitle{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--ink);margin-bottom:.4rem}
+    .wdesc{font-family:'Inter',sans-serif;font-size:.79rem;color:var(--muted);line-height:1.75;font-weight:300}
+
+    /* PROJECT DETAIL MODAL */
+    .modal-bg{position:fixed;inset:0;background:rgba(44,36,22,.6);z-index:500;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
+    .modal-bg.open{opacity:1;pointer-events:all}
+    .modal{background:var(--white);border-radius:4px;max-width:820px;width:100%;max-height:88vh;overflow-y:auto;position:relative}
+    .modal-close{position:sticky;top:1.2rem;float:right;margin-right:1.2rem;width:36px;height:36px;background:var(--card);border:none;border-radius:50%;cursor:pointer;font-size:1.1rem;color:var(--brown);z-index:10;transition:background .2s}
+    .modal-close:hover{background:var(--rose)}
+    .modal-hero{width:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;background:var(--card)}
+    .modal-body{padding:2.4rem 2.8rem 3rem}
+    .modal-eyebrow{font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+    .modal-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--ink);margin-bottom:1.8rem;font-weight:400}
+    
+    .modal-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:2rem}
+    .modal-tag{padding:.25rem .8rem;background:var(--rose);color:var(--brown);font-family:'Inter',sans-serif;font-size:.68rem;border-radius:50px}
+    .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--card);border-radius:3px;overflow:hidden;margin-bottom:2rem}
+    .pstep{background:var(--white);padding:1.1rem .9rem;text-align:center}
+    .pstep-num{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);font-style:italic;margin-bottom:.3rem}
+    .pstep-label{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.1em;color:var(--brown)}
+    .section-block{margin-bottom:2rem}
+    .block-heading{font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid rgba(201,169,110,.25)}
+    .block-text{font-size:.88rem;font-weight:300;color:var(--muted);line-height:2;margin-bottom:.8rem}
+    .insight-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.8rem}
+    .insight-card{flex:1;min-width:160px;background:var(--bg);border-radius:3px;padding:1rem 1.1rem;border-left:2px solid var(--gold)}
+    .insight-card strong{display:block;font-size:.8rem;color:var(--brown);margin-bottom:.3rem}
+    .insight-card span{font-family:'Inter',sans-serif;font-size:.76rem;color:var(--muted);line-height:1.65}
+    .outcome-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:.8rem}
+    .outcome-card{background:var(--bg);border-radius:3px;padding:1.1rem;text-align:center}
+    .outcome-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;color:var(--brown)}
+    .outcome-label{font-family:'Inter',sans-serif;font-size:.72rem;color:var(--muted);margin-top:.2rem}
+
+    /* SKILLS */
+    #skills{background:var(--white)}
+    .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:1060px}
+    .sgroup{margin-bottom:2.2rem}
+    .sgroup-title{font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+  
+    .sitem{margin-bottom:1rem}
+    .sname-row{display:flex;justify-content:space-between;font-size:.87rem;color:var(--ink);margin-bottom:.35rem}
+    .spct{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--muted)}
+    .sbar{height:2.5px;background:var(--card);border-radius:2px;overflow:hidden}
+    .sfill{height:100%;background:linear-gradient(to right,var(--brown),var(--gold));border-radius:2px;transform-origin:left;animation:barGrow 1.3s cubic-bezier(.22,1,.36,1) both}
+    @keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    .timeline{position:relative;padding-left:1.8rem}
+    .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),var(--rose))}
+    
+    .titem{position:relative;margin-bottom:2.5rem}
+    .titem::before{content:'';position:absolute;left:-1.8rem;top:.42rem;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateX(-3px)}
+
+    .tyear{font-family:'Inter',sans-serif;font-size:.67rem;letter-spacing:.14em;color:var(--gold);margin-bottom:.28rem}
+    .trole{font-size:.97rem;font-weight:500;color:var(--ink);margin-bottom:.2rem}
+    .torg{font-family:'Inter',sans-serif;font-size:.8rem;color:var(--brown);margin-bottom:.4rem}
+    .tdesc{font-size:.83rem;font-weight:300;color:var(--muted);line-height:1.9}
+
+    /* CONTACT */
+    #contact{background:var(--ink);color:var(--bg);text-align:center;padding:7rem 4rem}
+    #contact .sec-label{color:var(--gold)}
+    #contact .sec-title{color:var(--bg);margin-bottom:1.3rem}
+ 
+    .contact-sub{font-size:.93rem;font-weight:300;color:rgba(247,243,237,.58);margin-bottom:3.2rem;line-height:2}
+    .contact-links{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap}
+    .clink{display:flex;align-items:center;gap:.55rem;padding:.82rem 1.8rem;border:1px solid rgba(247,243,237,.2);color:var(--bg);text-decoration:none;font-family:'Inter',sans-serif;font-size:.79rem;letter-spacing:.08em;border-radius:2px;transition:border-color .3s,background .3s}
+    .clink:hover{border-color:var(--gold);background:rgba(201,169,110,.1)}
+    .clink svg{width:14px;height:14px;opacity:.6}
+
+    footer{background:#1C1610;text-align:center;padding:1.5rem;font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.1em;color:rgba(247,243,237,.26)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.in{opacity:1;transform:translateY(0)}
+
+    .project-gallery{display:flex;flex-direction:column;gap:18px;margin-top:20px}
+    .project-gallery img{width:100%;display:block;border-radius:6px}
+
+    @media(max-width:900px){nav{padding:1rem 2rem}section{padding:5rem 2rem}#hero{padding:7rem 2rem 4rem}.about-grid{grid-template-columns:1fr;gap:2.5rem}.works-grid{columns:2}.skills-grid{grid-template-columns:1fr;gap:3rem}.process-steps{grid-template-columns:repeat(2,1fr)}.outcome-row{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.works-grid{columns:1}.nav-links{display:none}.process-steps{grid-template-columns:1fr 1fr}.modal-body{padding:1.5rem 1.5rem 2rem}}
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.sfill{animation:none}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">赵宇晴 · Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#about">关于我</a></li>
+    <li><a href="#works">作品</a></li>
+    <li><a href="#skills">技能</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-deco"></div>
+  <p class="hero-eyebrow">Product Design · NEFU · 2024</p>
+  <h1 class="hero-name">Zhao <em>Yuqing</em></h1>
+  <p class="hero-zh">赵 宇 晴</p>
+  <p class="hero-desc">东北林业大学产品设计专业在读，以人为中心的设计思维实践者。相信好的设计是功能与情感的共鸣，让生活拥有更多温度与尊严。</p>
+  <div class="hero-btns">
+    <a href="#works" class="btn-primary">查看作品</a>
+    <a href="#contact" class="btn-outline">联系我</a>
+  </div>
+  <div class="hero-tags">
+    <span class="hero-tag">产品设计</span>
+    <span class="hero-tag">视觉设计</span>
+    <span class="hero-tag">包装设计</span>
+    <span class="hero-tag">室内设计</span>
+    <span class="hero-tag">信息可视化</span>
+    <span class="hero-tag">文创设计</span>
+  </div>
+</section>
+
+<div class="wave"><svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none"><path d="M0 30 C240 60 
+480 0 720 30 C960 60 1200 0 1440 30 L1440 60 L0 60 Z" fill="#8B6F5E"/></svg></div>
+
+<section id="about">
+  <div class="about-grid reveal">
+    <div>
+      <div class="about-photo-wrap">
+        <img src="https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/Poio/2160X3024/me.jpg" style="width:100%; border-radius:2px; object-fit: cover; aspect-ratio: 3/4;" alt="个人照片">
+      </div>
+      <div class="info-rows">
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.61 2.18 2 2 0 0 1 3.58 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+          15145266619
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          819794936@qq.com
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          东北林业大学 · 哈尔滨
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          微信：15145266619
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="sec-label">About Me</p>
+      <h2 class="sec-title">设计，让世界<em>更有温度</em></h2>
+      <p class="about-p">我是赵宇晴，东北林业大学家居与艺术设计学院产品设计专业在读学生。进取心强，注重细节，认真负责，拥有丰富的课程项目与校园视觉设计实践经验。</p>
+      <p class="about-p">担任班级团支书、中共预备党员，具备团队领导与项目统筹能力，日常负责小组项目整体构思、方案制作及落地全流程。</p>
+      <p class="about-p">思维活跃，擅长将文化符号融入现代设计语言。设计涉猎广泛，涵盖无障碍产品、文化文创、包装视觉与室内空间，致力于创造有温度、有深度的设计方案。</p>
+      <div class="tag-row">
+        <span class="tag">Adobe AI / PS</span><span class="tag">CAD</span><span class="tag">Figma</span>
+        <span class="tag">Procreate</span><span class="tag">剪映</span><span class="tag">ChatGPT</span>
+        <span class="tag">Gemini / 豆包</span><span class="tag">TARE solo</span>
+      </div>
+      <ul class="award-list">
+        <li>优秀学生二等奖学金</li>
+        <li>校级优秀学生干部</li>
+        <li>学院年度总结汇报 PPT 主制作人</li>
+        <li>学院官方公众号排版与内容制作</li>
+        <li>中共预备党员</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <p class="sec-label reveal">Selected Works</p>
+  <h2 class="sec-title reveal">精选<em>作品</em> <span style="font-family:'Inter',sans-serif;font-size:.85rem;font-weight:300;color:var(--muted);vertical-align:middle">— 点击卡片查看完整设计思路</span></h2>
+  <div class="filter-row reveal">
+    <button class="fbtn active" data-f="all">全部</button>
+    <button class="fbtn" data-f="product">产品设计</button>
+    <button class="fbtn" data-f="visual">视觉设计</button>
+    <button class="fbtn" data-f="space">空间设计</button>
+  </div>
+  <div class="works-grid reveal">
+
+    <div class="wcard" data-cat="product" data-id="dryer">
+      <div class="wthumb" style="height:260px; padding: 0;"><img src="https://kkm.de5.net/i/2026/06/14/6a2e8f9838bb2.png" style="width:100%; height:100%; object-fit:cover;" alt="吹风机效果图.png"></div>
+      <div class="woverlay"><span class="woverlay-text">查看设计思路 →</span></div>
+      <div class="winfo">
+        <p class="wcat">产品设计 · 2024</p>
+        <h3 class="wtitle">穿戴式无障碍吹风机</h3>
+        <p class="wdesc">聚焦独臂及肢体不便人群，通过穿戴式结构解放单手，让特殊群体独立完成日常护发。</p>
+      </div>
+    </div>
+
+    <div class="wcard" data-cat="visual" data-id="photo">
+      <div class="wthumb" style="height:200px; padding: 0;"><img src="https://kkm.de5.net/i/2026/06/14/6a2e9065e810d.png" style="width:100%; height:100%; object-fit:cover;" alt="效果图横屏.png"></div>
+      <div class="woverlay"><span class="woverlay-text">查看设计思路 →</span></div>
+      <div class="winfo">
+        <p class="wcat">产品摄影 · 2024</p>
+        <h3 class="wtitle">海洋系产品静物摄影</h3>
+        <p class="wdesc">以贝壳、细沙、丝绒布料构建场景，拍摄香水与美妆产品，呈现清透梦幻的海洋质感。</p>
+      </div>
+    </div>
+
+    <div class="wcard" data-cat="product" data-id="errenzhuan">
+      <div class="wthumb" style="height:240px; padding: 0;"><img src="https://kkm.de5.net/i/2026/06/14/6a2dac708e3c7.jpg" style="width:100%; height:100%; object-fit:cover;" alt="主图.jpg"></div>
+      <div class="woverlay"><span class="woverlay-text">查看设计思路 →</span></div>
+      <div class="winfo">
+        <p class="wcat">文创产品设计 · 2025</p>
+        <h3 class="wtitle">黑土地二人转毛绒玩具</h3>
+        <p class="wdesc">以东北二人转文化为原型，将经典角色转化为 Q 版毛绒玩偶，让民俗记忆触手可及。</p>
+      </div>
+    </div>
+
+    <div class="wcard" data-cat="space" data-id="tearoom">
+      <div class="wthumb" style="height:220px; padding: 0;">
+        <img src="https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/QBzS/833X625/%E8%8C%B6%E5%AE%A4%E6%95%88%E6%9E%9C%E5%9B%BE5.png" style="width:100%; height:100%; object-fit:cover;" alt="茶山有语室内设计">
+      </div>
+      <div class="woverlay"><span class="woverlay-text">查看设计思路 →</span></div>
+      <div class="winfo">
+        <p class="wcat">室内设计 · 2024</p>
+        <h3 class="wtitle">茶馆「茶山有语」室内设计</h3>
+        <p class="wdesc">以"茶修之境"为核心概念，融合新中式风格，围绕"静、雅、礼、清"精神打造典雅茶空间。</p>
+      </div>
+    </div>
+
+    <div class="wcard" data-cat="visual" data-id="pringles">
+      <div class="wthumb" style="height:195px; padding: 0;"><img src="https://kkm.de5.net/i/2026/06/14/6a2e977e2af4d.png" style="width:100%; height:100%; object-fit:cover;" alt="包装产出.png"></div>
+      <div class="woverlay"><span class="woverlay-text">查看设计思路 →</span></div>
+      <div class="winfo">
+        <p class="wcat">包装设计 · 2024</p>
+        <h3 class="wtitle">Pringles 万圣节限量包装</h3>
+        <p class="wdesc">以 Family Guy 万圣节为主题，为品客薯片设计系列限定包装，IP 与节日氛围深度融合。</p>
+      </div>
+    </div>
+
+    <div class="wcard" data-cat="visual" data-id="publication">
+      <div class="wthumb" style="height:210px; padding: 0;"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEVe8dqLpmZcNMY82HA3VoRO0p6nj0a-wAC1SYAAhZseFVfYHyXPXAY2jwE.png" style="width:100%; height:100%; object-fit:cover;" alt="出版物设计封面"></div>
+      <div class="woverlay"><span class="woverlay-text">查看设计思路 →</span></div>
+      <div class="winfo">
+        <p class="wcat">出版物设计 · 2024</p>
+        <h3 class="wtitle">What is Graphic Design?</h3>
+        <p class="wdesc">以"什么是平面设计"为主题的书籍设计，涵盖排版、插图、交互设计等多元议题。</p>
+      </div>
+    </div>
+
+    <div class="wcard" data-cat="visual" data-id="endangered">
+      <div class="wthumb" style="height:250px; padding: 0;"><img src="https://kkm.de5.net/i/2026/06/14/6a2e959579425.jpg" style="width:100%; height:100%; object-fit:cover;" alt="桔梗信息可视化设计_proc.jpg"></div>
+      <div class="woverlay"><span class="woverlay-text">查看设计思路 →</span></div>
+      <div class="winfo">
+        <p class="wcat">信息可视化海报 · 2023</p>
+        <h3 class="wtitle">濒危物种可视化系列海报</h3>
+        <p class="wdesc">《濒危植物·桔梗》与《濒危动物·水獭》，科普性与视觉美感兼备的系列设计。</p>
+      </div>
+    </div>
+
+    <div class="wcard" data-cat="space" data-id="model">
+      <div class="wthumb" style="height:205px; padding: 0;"><img src="https://kkm.de5.net/i/2026/06/14/6a2e90f2e85c1.jpg" style="width:100%; height:100%; object-fit:cover;" alt="院子效果展示.jpg"></div>
+      <div class="woverlay"><span class="woverlay-text">查看设计思路 →</span></div>
+      <div class="winfo">
+        <p class="wcat">室内设计模型 · 2023</p>
+        <h3 class="wtitle">新中式禅意室内微缩模型</h3>
+        <p class="wdesc">手工还原枯山水庭院与禅意客厅空间，完整记录材料选择与制作全过程。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <p class="sec-label reveal">Skills & Experience</p>
+  <h2 class="sec-title reveal">技能与<em>经历</em></h2>
+  <div class="skills-grid reveal">
+    <div>
+      <div class="sgroup">
+        <p class="sgroup-title">设计软件</p>
+        <div class="sitem"><div class="sname-row"><span>Adobe Illustrator</span><span class="spct">88%</span></div><div class="sbar"><div class="sfill" style="width:88%"></div></div></div>
+        <div class="sitem"><div class="sname-row"><span>Photoshop</span><span class="spct">85%</span></div><div class="sbar"><div class="sfill" style="width:85%"></div></div></div>
+        <div class="sitem"><div class="sname-row"><span>Figma</span><span class="spct">80%</span></div><div class="sbar"><div class="sfill" style="width:80%"></div></div></div>
+        <div class="sitem"><div class="sname-row"><span>Procreate</span><span class="spct">78%</span></div><div class="sbar"><div class="sfill" style="width:78%"></div></div></div>
+        <div class="sitem"><div class="sname-row"><span>CAD / 建模</span><span class="spct">72%</span></div><div class="sbar"><div class="sfill" style="width:72%"></div></div></div>
+        <div class="sitem"><div class="sname-row"><span>剪映 / 视频剪辑</span><span class="spct">75%</span></div><div class="sbar"><div class="sfill" style="width:75%"></div></div></div>
+      </div>
+      <div class="sgroup">
+        <p class="sgroup-title">AI 工具</p>
+        <div class="sitem"><div class="sname-row"><span>ChatGPT / Gemini / 豆包</span><span class="spct">90%</span></div><div class="sbar"><div class="sfill" style="width:90%"></div></div></div>
+        <div class="sitem"><div class="sname-row"><span>TARE solo / AI 图像生成</span><span class="spct">80%</span></div><div class="sbar"><div class="sfill" style="width:80%"></div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="timeline">
+        <div class="titem">
+          <p class="tyear">2024 — 至今</p>
+          <p class="trole">产品设计专业 · 在读本科生</p>
+          <p class="torg">东北林业大学 家居与艺术设计学院</p>
+          <p class="tdesc">系统学习产品设计、室内设计、视觉传达等方向，独立完成多项课程设计，积极参与校内外设计实践活动。</p>
+        </div>
+        <div class="titem">
+          <p class="tyear">2024 — 至今</p>
+          <p class="trole">班级团支书 · 中共预备党员</p>
+          <p class="torg">东北林业大学</p>
+          <p class="tdesc">组织班级事务与活动，参与学院年度汇报 PPT 的整体制作；具备较强的项目统筹与沟通协调能力。</p>
+        </div>
+        <div class="titem">
+          <p class="tyear">校园经历</p>
+          <p class="trole">学院公众号视觉设计</p>
+          <p class="torg">东北林业大学 家居与艺术设计学院</p>
+          <p class="tdesc">独立完成多期官方微信公众号的图文排版与视觉创作，兼顾可读性与学院品牌调性。</p>
+        </div>
+        <div class="titem">
+          <p class="tyear">荣誉</p>
+          <p class="trole">优秀学生二等奖学金 · 校级优秀学生干部</p>
+          <p class="torg">东北林业大学</p>
+          <p class="tdesc">综合表现优异，学业、组织能力与社会工作均衡发展，获校级多项荣誉认定。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="sec-label">Contact</p>
+  <h2 class="sec-title">期待与你<em>相遇</em></h2>
+  <p class="contact-sub">无论是实习机会、设计合作，还是创意交流<br/>都欢迎联系我，期待用设计创造更多可能。</p>
+  <div class="contact-links">
+    <a href="tel:15145266619" class="clink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.61 2.18 2 2 0 0 1 3.58 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+      15145266619
+    </a>
+    <a href="mailto:819794936@qq.com" class="clink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      819794936@qq.com
+    </a>
+    <a href="#" class="clink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      微信：15145266619
+    </a>
+  </div>
+</section>
+
+<footer>© 2025 赵宇晴 Zhao Yuqing · 东北林业大学产品设计 · 以设计温暖生活</footer>
+
+<div class="modal-bg" id="modal-bg">
+  <div class="modal" id="modal-content">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div id="modal-inner"></div>
+  </div>
+</div>
+
+<script>
+// ── Project data ──
+const projects = {
+  dryer: {
+    emoji:'💨', grad:'linear-gradient(135deg,#E8D5CC,#C9A96E 60%,#8B6F5E)',
+    cat:'产品设计 · 2024',
+    title:'穿戴式无障碍吹风机',
+    gallery:[
+      'https://kkm.de5.net/i/2026/06/14/6a2e8feea7295.png',
+      'https://kkm.de5.net/i/2026/06/14/6a2e8fef85ffd.png',
+      'https://kkm.de5.net/i/2026/06/14/6a2e8ff0bbca0.png',
+      'https://kkm.de5.net/i/2026/06/14/6a2e8ff202b35.png',
+      'https://kkm.de5.net/i/2026/06/14/6a2e8fca7580e.jpg'
+    ],
+    tags:['无障碍设计','通用设计','人机工程','产品原型'],
+    process:['发现问题','用户研究','概念生成','方案落地'],
+    bg:`<p class="block-text">在日常生活中，独臂人士、偏瘫患者及行动不便的老年群体往往面临一个被忽视的困境——如何独立完成吹发这一"普通人"毫不费力的动作。市面上的电吹风几乎清一色为双手操作设计，无障碍设计领域存在明显空白。</p><p class="block-text">本项目以"让每个人都能有尊严地照顾自己"为核心出发点，探索一种无需依赖他人、独立完成护发的产品解决方案。</p>`,
+    research:`<div class="insight-row">
+      <div class="insight-card"><strong>目标用户</strong><span>独臂人士、偏瘫患者、上肢力量受限的老年人，生活自理需求强烈</span></div>
+      <div class="insight-card"><strong>核心痛点</strong><span>传统吹风机需双手配合：一手持机、一手梳理，单手使用极为不便</span></div>
+      <div class="insight-card"><strong>心理需求</strong><span>不愿依赖他人，渴望在日常护理中保持自主与尊严感</span></div>
+    </div>`,
+    process_detail:`<p class="block-text">初期草图阶段探索了固定式、支架式、头戴式三种方向，通过模型验证发现：固定式灵活性差，支架式移动不便，最终锁定<strong>穿戴式头盔结构</strong>为最优解。</p><p class="block-text">迭代重点聚焦于两个维度：① 热风出风口角度与覆盖范围的优化，确保吹发效果；② 穿戴舒适性与重量分布，避免长时间佩戴造成颈部负担。最终方案结合人机工程学数据，重量控制在 380g 以内，并支持单手一键调温。</p>`,
+    outcome:`<div class="outcome-row">
+      <div class="outcome-card"><div class="outcome-num">0</div><div class="outcome-label">双手依赖</div></div>
+      <div class="outcome-card"><div class="outcome-num">380g</div><div class="outcome-label">整机重量控制</div></div>
+      <div class="outcome-card"><div class="outcome-num">3档</div><div class="outcome-label">单手可调风温</div></div>
+    </div>`
+  },
+  photo: {
+    emoji:'🐚', grad:'linear-gradient(135deg,#B8D4E8,#D4EAF7 50%,#EEF7FB)',
+    cat:'产品摄影 · 2024',
+    title:'海洋系产品静物摄影',
+    gallery:[
+      'https://kkm.de5.net/i/2026/06/14/6a2e9065e810d.png',
+      'https://kkm.de5.net/i/2026/06/14/6a2e90917c530.png',
+      'https://kkm.de5.net/i/2026/06/14/6a2e90954f203.png',
+      'https://kkm.de5.net/i/2026/06/14/6a2e9098b734c.png'
+    ],
+    tags:['产品摄影','场景搭建','光影设计','后期修图'],
+    process:['概念策划','道具选取','场景搭建','拍摄调光'],
+    bg:`<p class="block-text">课题要求以香水与美妆产品为拍摄对象，在不依赖专业影棚设备的前提下，通过场景搭建与自然光运用，创作出具有商业质感的静物摄影作品。</p><p class="block-text">在主题方向上，选择"海洋"作为核心意象——清透、纯净、梦幻，与香水产品本身的气质高度契合，同时为视觉语言提供了丰富的道具与色彩空间。</p>`,
+    research:`<div class="insight-row">
+      <div class="insight-card"><strong>主题锚定</strong><span>海洋意象：清透、纯净，与香水、护肤品的产品气质天然契合</span></div>
+      <div class="insight-card"><strong>道具语言</strong><span>贝壳、细白沙、蓝色丝绒、透明玻璃珠——层次丰富、触感可感知</span></div>
+      <div class="insight-card"><strong>光线策略</strong><span>利用自然侧光制造柔和阴影，配合白色反光板平衡暗部细节</span></div>
+    </div>`,
+    process_detail:`<p class="block-text">场景搭建历经多次调整：第一版道具过于密集，视觉重心分散；第二版精减道具数量，让产品本身成为绝对主角，贝壳与细沙作为辅助叙事元素退居背景。</p><p class="block-text">拍摄过程中针对瓶身反光进行了重点处理——通过调整光源角度与柔光箱距离，既保留玻璃瓶的通透质感，又避免了强反光遮盖品牌标识的问题。后期在 Lightroom 中强调冷色调，进一步强化海洋清凉感。</p>`,
+    outcome:`<div class="outcome-row">
+      <div class="outcome-card"><div class="outcome-num">3</div><div class="outcome-label">套场景方案</div></div>
+      <div class="outcome-card"><div class="outcome-num">自然光</div><div class="outcome-label">零设备依赖</div></div>
+      <div class="outcome-card"><div class="outcome-num">商业级</div><div class="outcome-label">成片质感</div></div>
+    </div>`
+  },
+  errenzhuan: {
+    emoji:'🎭', grad:'linear-gradient(135deg,#C0392B,#922B21 55%,#7B241C)',
+    cat:'文创产品设计 · 2025',
+    title:'《黑土地剧团》二人转毛绒玩具',
+    gallery:[
+      'https://kkm.de5.net/i/2026/06/14/6a2dac708e3c7.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2dac6e42251.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2dac6f9b67d.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2dac6ee98fe.jpg',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/bBsC/1105X964/%E4%BA%8C%E4%B8%AB%E5%8E%9F%E7%A8%BF.jpg',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/lcNt/810X1081/%E6%A1%82%E5%AD%90%E5%8E%9F%E7%A8%BF.jpg',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/tVWW/1044X1458/%E8%B1%86%E5%AD%90%E5%8E%9F%E7%A8%BF.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2dac6d89db8.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2dac6c12b4a.jpg'
+    ],
+    tags:['文创设计','IP 设计','民俗文化','Q版萌系'],
+    process:['文化提炼','形象设定','材质工艺','场景应用'],
+    bg:`<p class="block-text">本系列玩具以东北二人转文化为核心设计原型，通过“萌系形象+民俗元素”的融合方式，将二人转经典角色（丑角、旦角、乐手等）转化为软萌毛绒玩偶。</p><p class="block-text">既保留了二人转服饰、道具等文化符号的辨识度，又以Q版造型适配现代审美，让玩具不仅是陪伴物，更成为承载东北二人转文化记忆的“小载体”。</p>`,
+    research:`<div class="insight-row">
+      <div class="insight-card"><strong>角色提炼</strong><span>二丫（旦角）、柱子（丑角）、豆子（乐手）、小龙（伴舞）、小宝（票友），性格鲜明</span></div>
+      <div class="insight-card"><strong>色彩系统</strong><span>提取民间经典色彩：喜庆红、暖黄、紫绿撞色及深蓝色系，呼应热烈氛围</span></div>
+      <div class="insight-card"><strong>材质考量</strong><span>短毛绒面料+高弹PP棉，配以无尖锐部件的刺绣与迷你布艺道具，兼顾触感与安全</span></div>
+    </div>`,
+    process_detail:`<p class="block-text">设计中深入挖掘了各个角色的性格特质与视觉符号进行IP化重塑：活泼的“二丫”梳双丫髻配红绿撞色裙；可爱的“柱子”戴红顶花帽拿秧歌扇；“豆子”抱迷你唢呐憨厚老实；作为“团宠”的“小宝”则戴着毛绒棉帽自带幽默感。</p><p class="block-text">在场景应用方面，这套玩偶不仅适用于日常的家居陪伴，也非常适合作为东北文旅场景的地域文化纪念品，或是节假日探亲的特色伴手礼，让非遗文化拥有立体的表达媒介。</p>`,
+    outcome:`<div class="outcome-row">
+      <div class="outcome-card"><div class="outcome-num">5</div><div class="outcome-label">专属IP角色</div></div>
+      <div class="outcome-card"><div class="outcome-num">刺绣</div><div class="outcome-label">安全布艺工艺</div></div>
+      <div class="outcome-card"><div class="outcome-num">多场景</div><div class="outcome-label">文旅纪念与陪伴周边</div></div>
+    </div>`
+  },
+  tearoom: {
+    emoji:'🍃', grad:'linear-gradient(135deg,#8B7355,#A0855B 45%,#C4A882)',
+    cat:'室内设计 · 2024',
+    title:'茶馆「茶山有语」室内设计',
+    gallery:[
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/QBzS/833X625/%E8%8C%B6%E5%AE%A4%E6%95%88%E6%9E%9C%E5%9B%BE5.png',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/wsmI/831X623/%E8%8C%B6%E5%AE%A4%E6%95%88%E6%9E%9C%E5%9B%BE4.png',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/aO8f/831X623/%E5%93%81%E8%8C%B6%E5%8C%BA%E6%95%88%E6%9E%9C%E5%9B%BE1.png',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/ynz1/829X622/%E7%8B%AC%E7%AB%8B%E5%93%81%E8%8C%B6%E5%8C%BA%E6%95%88%E6%9E%9C%E5%9B%BE2.png',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/z6Jo/831X623/%E5%89%8D%E5%8F%B0%E6%95%88%E6%9E%9C%E5%9B%BE7.png',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/7Np5/826X620/%E8%8C%B6%E9%A6%86%E6%95%88%E6%9E%9C%E5%9B%BE6.png',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/eHOG/829X622/%E8%8C%B6%E5%AE%A4%E6%95%88%E6%9E%9C%E5%9B%BE3.png',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/cPoY/825X494/%E4%BF%AF%E7%9E%B0%E7%AB%8B%E4%BD%93%E6%A8%A1%E5%9E%8B.png',
+      'https://backup.fukit.cn/autoupload/fr/4MF5gyOfmmFY0AopMIn0x4yAm9x2-O1sE7_lYQfoIrCyl5f0KlZfm6UsKj-HyTuv/20260614/bT5Z/906X481/%E5%B9%B3%E9%9D%A2%E5%9B%BE.png'
+    ],
+    tags:['室内设计','新中式','空间叙事','茶文化'],
+    process:['主题立意','空间规划','材质配色','软装陈设'],
+    bg:`<p class="block-text">随着国潮文化兴起，以茶为载体的慢生活空间越来越受到城市人群的青睐。本项目为「茶山有语」茶馆进行室内设计，旨在打造一处让人真正静下来、感受茶文化内涵的体验空间，而非仅停留于表面装饰的"网红打卡点"。</p><p class="block-text">设计以"茶修之境"为核心概念，围绕茶文化中"静、雅、礼、清"四字精神展开空间叙事。</p>`,
+    research:`<div class="insight-row">
+      <div class="insight-card"><strong>静</strong><span>声学与视觉的双重隔绝，通过竹格栅与软质材料降低噪音干扰</span></div>
+      <div class="insight-card"><strong>雅</strong><span>克制的色彩系统：竹青、山水灰、木本色，拒绝过度装饰</span></div>
+      <div class="insight-card"><strong>礼</strong><span>座位布局尊重私密性，动线设计体现待客之道</span></div>
+      <div class="insight-card"><strong>清</strong><span>自然采光最大化，水景与绿植引入"清"的气韵</span></div>
+    </div>`,
+    process_detail:`<p class="block-text">平面布局经历三版推敲：初版追求对称工整，但显得过于正式；第二版引入错落的隔断，营造移步换景的趣味，但私密性不足；最终方案以竹格栅为核心元素，实现"隔而不断"的空间关系，每个座位区既相互独立又共享整体氛围。</p><p class="block-text">材质选择以竹、原木、米砂岩为主，辅以手工陶器与宣纸灯具，色调控制在低饱和度暖色系，确保视觉上的放松感。软装陈设挑选具有文化意义的茶具与字画，避免过度堆砌。</p>`,
+    outcome:`<div class="outcome-row">
+      <div class="outcome-card"><div class="outcome-num">3</div><div class="outcome-label">功能分区</div></div>
+      <div class="outcome-card"><div class="outcome-num">竹格栅</div><div class="outcome-label">核心设计语言</div></div>
+      <div class="outcome-card"><div class="outcome-num">自然光</div><div class="outcome-label">主光源策略</div></div>
+    </div>`
+  },
+  pringles: {
+    emoji:'🎃', grad:'linear-gradient(135deg,#2C2416,#5D3A1A 45%,#922B21)',
+    cat:'包装设计 · 2024',
+    title:'Pringles 万圣节限量包装',
+    gallery:[
+      'https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEVe75qLpjLTmGExbUhuxOYXv-nY8ep_gACyCYAAhZseFUS11wWnUE15DwE.jpg'
+    ],
+    tags:['包装设计','IP 联名','节日营销','视觉插画'],
+    process:['品牌研究','主题确立','插画创作','版式设计'],
+    bg:`<p class="block-text">万圣节是快消品牌进行限定包装营销的重要节点，如何在保持品牌辨识度的前提下，创作出既有节日氛围又具收藏价值的限定包装，是本项目的核心命题。</p><p class="block-text">在 IP 选择上，Family Guy（恶搞之家）以其独特的黑色幽默与万圣节主题的恐怖趣味高度契合，同时作为经典美国动画 IP，与 Pringles 的品牌受众高度重合。</p>`,
+    research:`<div class="insight-row">
+      <div class="insight-card"><strong>品牌基因</strong><span>Pringles 的核心视觉：Mr. P 胡子先生 Logo、红色系、弧形薯片轮廓</span></div>
+      <div class="insight-card"><strong>节日氛围</strong><span>万圣节视觉语言：南瓜、骷髅、蜘蛛网、黑橙配色经典组合</span></div>
+      <div class="insight-card"><strong>IP 特质</strong><span>Family Guy 角色夸张搞怪，与万圣节黑色幽默调性完美契合</span></div>
+    </div>`,
+    process_detail:`<p class="block-text">设计过程分为主视觉插画创作与版式排布两个阶段。插画创作阶段对 Family Guy 主角进行万圣节 Cosplay 再设计——Peter 扮成僵尸、Stewie 扮成小巫师，保留角色辨识度的同时融入节日元素。</p><p class="block-text">版式方面，将 Mr. P Logo 与 Family Guy 角色进行"同框设计"，保持品牌主视觉的统治地位，IP 角色作为场景配角出现，避免喧宾夺主。整体色调以深橙 + 炭黑为主，保持万圣节恐怖趣味感。</p>`,
+    outcome:`<div class="outcome-row">
+      <div class="outcome-card"><div class="outcome-num">3</div><div class="outcome-label">系列包装款式</div></div>
+      <div class="outcome-card"><div class="outcome-num">IP 联名</div><div class="outcome-label">品牌 × 动画跨界</div></div>
+      <div class="outcome-card"><div class="outcome-num">限定</div><div class="outcome-label">收藏级节日设计</div></div>
+    </div>`
+  },
+  publication: {
+    emoji:'📖', grad:'linear-gradient(135deg,#5B4FCF,#8B7FE0 50%,#C3B9F5)',
+    cat:'出版物设计 · 2024',
+    title:'What is Graphic Design?',
+    gallery:[
+      'https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEVe8RqLpkmcKu34z5B2z3MqQABcM0eJNMAAtAmAAIWbHhVElZ1Evun1_k8BA.jpg'
+    ],
+    tags:['出版物设计','版式设计','书籍装帧','视觉传达'],
+    process:['内容架构','版式系统','图文编排','装帧设计'],
+    bg:`<p class="block-text">以"什么是平面设计"为主题的书籍设计课题，要求通过出版物的形式，对平面设计的多个维度进行系统性的视觉诠释。挑战在于：设计一本"关于设计的书"，本身就必须成为一个设计的范本。</p><p class="block-text">书籍内容涵盖排版设计、图标设计、信息可视化、交互设计四个章节，每个章节在保持整体视觉系统统一的前提下，以不同的版式语言呼应该章节的设计内容。</p>`,
+    research:`<div class="insight-row">
+      <div class="insight-card"><strong>设计立场</strong><span>书籍本身即是内容的最好注解，形式与内容须高度互文</span></div>
+      <div class="insight-card"><strong>版式逻辑</strong><span>建立统一的网格系统，在克制中寻求每章节的个性表达空间</span></div>
+      <div class="insight-card"><strong>读者体验</strong><span>信息层级清晰，阅读动线自然流畅，视觉留白保证呼吸感</span></div>
+    </div>`,
+    process_detail:`<p class="block-text">首先建立 12 栏网格系统作为全书版式基础，确保各章节在视觉上的统一性。字体选用 Helvetica Neue（英文标题）+ 思源黑体（中文正文）的经典组合，建立清晰的字级体系。</p><p class="block-text">各章节在统一框架内寻找差异：排版章节以密集文字块体现"律动"；图标章节以大量白空间突显图形张力；可视化章节引入彩色数据图表打破节奏；交互章节则模拟界面 UI 风格进行版面设计。封面以强烈的几何对比和问句标题形成冲击力。</p>`,
+    outcome:`<div class="outcome-row">
+      <div class="outcome-card"><div class="outcome-num">4</div><div class="outcome-label">章节差异化设计</div></div>
+      <div class="outcome-card"><div class="outcome-num">12栏</div><div class="outcome-label">统一网格系统</div></div>
+      <div class="outcome-card"><div class="outcome-num">双语</div><div class="outcome-label">中英文版式并行</div></div>
+    </div>`
+  },
+  endangered: {
+    emoji:'🌿', grad:'linear-gradient(135deg,#4A7C59,#6BAF7E 45%,#A8D5B5)',
+    cat:'信息可视化海报 · 2023',
+    title:'濒危物种可视化系列海报',
+    gallery:[
+      'https://kkm.de5.net/i/2026/06/14/6a2e959579425.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2e9595c645c.jpg'
+    ],
+    tags:['信息可视化','海报设计','插画','自然保护'],
+    process:['物种调研','数据梳理','风格定调','视觉呈现'],
+    bg:`<p class="block-text">中国现有大量濒危动植物物种面临灭绝风险，但公众对此的认知度远远不足。本系列海报希望通过信息可视化的方式，将枯燥的濒危数据转化为有温度、有冲击力的视觉语言，引发观者对生物多样性议题的关注。</p><p class="block-text">系列共两幅：《濒危植物·桔梗》与《濒危动物·水獭》，分别代表植物与动物两个维度，在风格上形成差异化的视觉表达。</p>`,
+    research:`<div class="insight-row">
+      <div class="insight-card"><strong>桔梗</strong><span>国家二级保护植物，因过度采摘与栖息地破坏数量锐减，国风水彩风格</span></div>
+      <div class="insight-card"><strong>水獭</strong><span>曾广泛分布于中国，现已极度濒危，清新插画风格传递温柔的紧迫感</span></div>
+      <div class="insight-card"><strong>数据维度</strong><span>种群数量变化、栖息地面积减少、主要威胁因素可视化呈现</span></div>
+    </div>`,
+    process_detail:`<p class="block-text">在风格方向上，两幅海报有意制造差异：桔梗海报采用中国传统国画水彩风格，以渲染技法呼应植物的文人气质，数据以流线型图表融入画面；水獭海报则采用清新扁平插画风格，通过拟人化的水獭表情传递情感，数据图表使用暖色系降低信息的冷漠感。</p><p class="block-text">信息层级设计遵循"情感钩子 → 核心数据 → 背景知识 → 行动召唤"的叙事逻辑，确保观者在短暂停留时能获取最关键的信息。</p>`,
+    outcome:`<div class="outcome-row">
+      <div class="outcome-card"><div class="outcome-num">2</div><div class="outcome-label">系列差异化风格</div></div>
+      <div class="outcome-card"><div class="outcome-num">科普</div><div class="outcome-label">数据转化为情感</div></div>
+      <div class="outcome-card"><div class="outcome-num">双维度</div><div class="outcome-label">动物 × 植物并行</div></div>
+    </div>`
+  },
+  model: {
+    emoji:'🏡', grad:'linear-gradient(135deg,#3D5A47,#7D9E8A 50%,#BDD4C6)',
+    cat:'室内设计模型 · 2023',
+    title:'新中式禅意室内微缩模型',
+    gallery:[
+      'https://kkm.de5.net/i/2026/06/14/6a2e90fb44d39.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2e90fcb462d.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2e9116bbb48.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2e913f1c7be.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2e914a14eb8.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2e913f23bf5.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2e915119e61.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2e914f69bf2.jpg',
+      'https://kkm.de5.net/i/2026/06/14/6a2e913f1c7be.jpg'
+    ],
+    tags:['室内设计','手工模型','新中式','枯山水'],
+    process:['方案设计','材料选择','结构制作','细节还原'],
+    bg:`<p class="block-text">本项目为室内设计基础课程的模型制作作业，要求以手工方式还原一个完整的室内空间方案。在主题选择上，以"新中式禅意居住空间"为方向，融合枯山水庭院元素与现代居住功能，探索传统东方美学在当代空间中的转化方式。</p><p class="block-text">模型以 1:20 比例制作，空间包含禅意庭院区、冥想休憩区与日式茶席区三个功能空间。</p>`,
+    research:`<div class="insight-row">
+      <div class="insight-card"><strong>枯山水</strong><span>日本枯山水以白沙耙纹象征流水，与中式园林意境融合，共同营造"静观"氛围</span></div>
+      <div class="insight-card"><strong>材料语言</strong><span>竹、石、原木、白砂——自然材料的质感本身即是设计语言</span></div>
+      <div class="insight-card"><strong>禅意核心</strong><span>"少即是多"——克制的陈设密度让空间拥有呼吸感与冥想空间</span></div>
+    </div>`,
+    process_detail:`<p class="block-text">模型制作分阶段推进：先完成墙体与地面的结构搭建，再依次制作家具、庭院景观与软装陈设。竹帘采用真实竹签编织；枯山水白沙区用细沙与白色颜料混合模拟；苔藓区域以海绵染色还原质感。</p><p class="block-text">最具挑战的是微型家具的制作——茶席桌面仅有 4cm 宽，需在如此小的尺度内保持木纹方向的真实感，最终借助薄木片拼贴实现。整个模型历时约三周完成，记录了完整的制作过程影像。</p>`,
+    outcome:`<div class="outcome-row">
+      <div class="outcome-card"><div class="outcome-num">1:20</div><div class="outcome-label">制作比例</div></div>
+      <div class="outcome-card"><div class="outcome-num">3周</div><div class="outcome-label">完整制作周期</div></div>
+      <div class="outcome-card"><div class="outcome-num">真实</div><div class="outcome-label">天然材料还原</div></div>
+    </div>`
+  }
+};
+
+function buildModal(id) {
+  const p = projects[id];
+  if (!p) return '';
+  return `
+    <div class="modal-hero" style="height:200px;background:${p.grad};font-size:5rem;display:flex;align-items:center;justify-content:center">${p.emoji}</div>
+    <div class="modal-body">
+      <p class="modal-eyebrow">${p.cat}</p>
+      <h2 class="modal-title">${p.title}</h2>
+      <div class="modal-tags">${p.tags.map(t=>`<span class="modal-tag">${t}</span>`).join('')}</div>
+      <div class="process-steps">${p.process.map((s,i)=>`<div class="pstep"><div class="pstep-num">0${i+1}</div><div class="pstep-label">${s}</div></div>`).join('')}</div>
+      <div class="section-block">
+        <p class="block-heading">项目背景 · 设计动机</p>
+        ${p.bg}
+      </div>
+      <div class="section-block">
+        <p class="block-heading">用户洞察 · 问题分析</p>
+        ${p.research}
+      </div>
+      <div class="section-block">
+        <p class="block-heading">设计过程 · 迭代思路</p>
+        ${p.process_detail}
+      </div>
+      ${p.gallery ? `<div class="section-block"><p class="block-heading">项目展示</p><div class="project-gallery">${p.gallery.map(img=>`<img src="${img}" loading="lazy">`).join('')}</div></div>` : ''}
+      <div class="section-block">
+        <p class="block-heading">最终成果</p>
+        ${p.outcome}
+      </div>
+    </div>`;
+}
+
+// Open / close modal
+const bg = document.getElementById('modal-bg');
+const inner = document.getElementById('modal-inner');
+document.querySelectorAll('.wcard').forEach(card => {
+  card.addEventListener('click', () => {
+    const id = card.dataset.id;
+    inner.innerHTML = buildModal(id);
+    bg.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+document.getElementById('modal-close').addEventListener('click', close);
+bg.addEventListener('click', e => { if(e.target === bg) close(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') close(); });
+function close() { bg.classList.remove('open'); document.body.style.overflow = ''; }
+
+// Filter
+document.querySelectorAll('.fbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.f;
+    document.querySelectorAll('.wcard').forEach(c => {
+      c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
+    });
+  });
+});
+
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
